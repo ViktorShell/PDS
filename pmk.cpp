@@ -34,15 +34,14 @@ std::vector<uint64_t> generate_keys(size_t N) {
   return keys;
 }
 
-// Checksum for uint64_t and uint32_t
-template <typename T> uint64_t checksum(const T *vec, size_t size) {
+uint64_t checksum(const uint64_t *vec, size_t size) {
   const uint64_t FNV_offset_basis = 0xcbf29ce484222325ULL; // random
   const uint64_t FNV_prime = 11972354906962701971ULL;      // large prime number
 
   // conversion to ascii
   uint64_t hash = FNV_offset_basis;
   const unsigned char *bytes = reinterpret_cast<const unsigned char *>(vec);
-  size_t num_bytes = size * sizeof(T);
+  size_t num_bytes = size * sizeof(uint64_t);
 
   for (size_t i = 0; i < num_bytes; ++i) {
     hash ^= bytes[i];
@@ -54,8 +53,8 @@ template <typename T> uint64_t checksum(const T *vec, size_t size) {
 
 // It seems that always_inline have close to the same execution time as inline
 __attribute__((always_inline)) inline void
-map_keys(const uint64_t *__restrict__ keys, uint32_t *__restrict__ part_id,
-         size_t P, size_t N) {
+map_keys(const uint64_t *__restrict__ keys, uint64_t *__restrict__ part_id,
+         uint64_t P, size_t N) {
   const uint64_t prime_number = 0x9E3779B97F4A7C15ULL;
 
 #ifdef AVX
@@ -114,8 +113,8 @@ map_keys(const uint64_t *__restrict__ keys, uint32_t *__restrict__ part_id,
 
 // Deriving mean and std deviation
 void mean_and_std_deviation(const uint64_t *__restrict__ keys,
-                            uint32_t *__restrict__ part_id, size_t times,
-                            size_t N, size_t P) {
+                            uint64_t *__restrict__ part_id, size_t times,
+                            size_t N, uint64_t P) {
   // Mean
   std::vector<double> times_vec(N);
   double acc = 0.0;
@@ -143,10 +142,9 @@ void mean_and_std_deviation(const uint64_t *__restrict__ keys,
 
 // Checking variation of time based on the varbiels N and P
 void sweep_n_p(const uint64_t *__restrict__ keys,
-               uint32_t *__restrict__ part_id, size_t N, size_t P) {
+               uint64_t *__restrict__ part_id, size_t N, uint64_t P) {
   std::cout << "N;P;ELAPSED_TIME,THROUGHPUT" << std::endl;
   for (size_t n = N; n < 10000000000 + 1; n = n * 10) {
-    // for (size_t p = P; p < 1048576 + 1; p = p * 2) {
     for (size_t p = P; p < (n / 2) + 1; p = p * 2) {
       // Mapping
       TIMERSTART(exec_time);
@@ -163,7 +161,7 @@ void sweep_n_p(const uint64_t *__restrict__ keys,
 int main() {
   // Sizes
   size_t N = 100000;
-  size_t P = 1024;
+  uint64_t P = 1024;
   size_t TIMES = 10;
 
 #ifdef BASELINE
@@ -176,7 +174,7 @@ int main() {
 
   // Linear allocation
   std::vector<uint64_t> keys = generate_keys(N);
-  std::vector<uint32_t> part_id(N);
+  std::vector<uint64_t> part_id(N);
 
   // Data gathering
   mean_and_std_deviation(keys.data(), part_id.data(), TIMES, N, P);
