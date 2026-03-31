@@ -58,47 +58,89 @@ map_keys(const uint64_t *__restrict__ keys, uint64_t *__restrict__ part_id,
   const uint64_t prime_number = 0x9E3779B97F4A7C15ULL;
 
 #ifdef AVX
+  __m256i _prime = _mm256_set1_epi64x(prime_number);
+  __m256i _mask = _mm256_set1_epi64x(P - 1);
 
-  const uint64_t mask_val = P - 1;
-
-  // Load vectors with prime number and the mask 4 x 64-bit
-  __m256i v_prime = _mm256_set1_epi64x(prime_number);
-  __m256i v_mask = _mm256_set1_epi64x(mask_val);
-
-  // Prepare the cross product for the mul operation
-  __m256i v_prime_swap = _mm256_shuffle_epi32(v_prime, _MM_SHUFFLE(2, 3, 0, 1));
+  // Precalcoliamo la parte alta del numero primo per l'emulazione
+  __m256i _prime_h = _mm256_srli_epi64(_prime, 32);
 
   size_t i = 0;
-
   for (; i + 4 <= N; i += 4) {
-    // Load 4 keys
-    __m256i v_keys = _mm256_loadu_si256((const __m256i *)&keys[i]);
-    __m256i prod_hi = _mm256_mullo_epi32(v_keys, v_prime_swap);
-    __m256i prod_hi_sum = _mm256_add_epi32(
-        prod_hi, _mm256_shuffle_epi32(prod_hi, _MM_SHUFFLE(2, 3, 0, 1)));
-    __m256i prod_hi_shifted = _mm256_slli_epi64(prod_hi_sum, 32);
-    __m256i prod_lo = _mm256_mul_epu32(v_keys, v_prime);
-    __m256i v_hash = _mm256_add_epi64(prod_lo, prod_hi_shifted);
-    v_hash = _mm256_srli_epi64(v_hash, 32);
-    v_hash = _mm256_and_si256(v_hash, v_mask);
+    __m256i _keys = _mm256_loadu_si256((const __m256i *)&keys[i]);
 
-    // Conversion to 4x 32-bit
-    __m256i shuf = _mm256_shuffle_epi32(v_hash, _MM_SHUFFLE(2, 0, 2, 0));
-    __m128i lo = _mm256_castsi256_si128(shuf); // Prende i 128 bit inferiori
-    __m128i hi =
-        _mm256_extracti128_si256(shuf, 1); // Prende i 128 bit superiori
-    __m128i v_part_id = _mm_unpacklo_epi64(lo, hi);
+    // --- Emulazione Moltiplicazione 64-bit (K * P) ---
+    // 1. K_L * P_L
+    __m256i mul_ll = _mm256_mul_epu32(_keys, _prime);
 
-    // Save to memory
-    _mm_storeu_si128((__m128i *)&part_id[i], v_part_id);
+    // 2. K_H * P_L
+    __m256i keys_h = _mm256_srli_epi64(_keys, 32);
+    __m256i mul_hl = _mm256_mul_epu32(keys_h, _prime);
+
+    // 3. K_L * P_H
+    __m256i mul_lh = _mm256_mul_epu32(_keys, _prime_h);
+
+    // 4. Somma incrociata ((K_H * P_L) + (K_L * P_H)) << 32
+    __m256i cross_sum = _mm256_add_epi64(mul_hl, mul_lh);
+    __m256i cross_shifted = _mm256_slli_epi64(cross_sum, 32);
+
+    // 5. Risultato finale della moltiplicazione a 64-bit
+    __m256i _hash = _mm256_add_epi64(mul_ll, cross_shifted);
+    // --------------------------------------------------
+
+    _hash = _mm256_srli_epi64(_hash, 32);
+    __m256i _and_result = _mm256_and_si256(_hash, _mask);
+
+    // Correzzione: storeu invece di store per prevenire i SegFault
+    _mm256_storeu_si256((__m256i *)&part_id[i], _and_result);
   }
 
-  // Handling of the remaining item in case the keys are not multiple of 4
   for (; i < N; i++) {
     uint64_t key = keys[i];
     uint64_t hash = (key * prime_number) >> 32;
-    part_id[i] = hash & mask_val;
+    part_id[i] = hash & (P - 1);
   }
+
+  // const uint64_t mask_val = P - 1;
+  //
+  // // Load vectors with prime number and the mask 4 x 64-bit
+  // __m256i v_prime = _mm256_set1_epi64x(prime_number);
+  // __m256i v_mask = _mm256_set1_epi64x(mask_val);
+  //
+  // // Prepare the cross product for the mul operation
+  // __m256i v_prime_swap = _mm256_shuffle_epi32(v_prime, _MM_SHUFFLE(2, 3, 0,
+  // 1));
+  //
+  // size_t i = 0;
+  //
+  // for (; i + 4 <= N; i += 4) {
+  //   // Load 4 keys
+  //   __m256i v_keys = _mm256_loadu_si256((const __m256i *)&keys[i]);
+  //   __m256i prod_hi = _mm256_mullo_epi32(v_keys, v_prime_swap);
+  //   __m256i prod_hi_sum = _mm256_add_epi32(
+  //       prod_hi, _mm256_shuffle_epi32(prod_hi, _MM_SHUFFLE(2, 3, 0, 1)));
+  //   __m256i prod_hi_shifted = _mm256_slli_epi64(prod_hi_sum, 32);
+  //   __m256i prod_lo = _mm256_mul_epu32(v_keys, v_prime);
+  //   __m256i v_hash = _mm256_add_epi64(prod_lo, prod_hi_shifted);
+  //   v_hash = _mm256_srli_epi64(v_hash, 32);
+  //   v_hash = _mm256_and_si256(v_hash, v_mask);
+  //
+  //   // Conversion to 4x 32-bit
+  //   __m256i shuf = _mm256_shuffle_epi32(v_hash, _MM_SHUFFLE(2, 0, 2, 0));
+  //   __m128i lo = _mm256_castsi256_si128(shuf); // Prende i 128 bit inferiori
+  //   __m128i hi =
+  //       _mm256_extracti128_si256(shuf, 1); // Prende i 128 bit superiori
+  //   __m128i v_part_id = _mm_unpacklo_epi64(lo, hi);
+  //
+  //   // Save to memory
+  //   _mm_storeu_si128((__m128i *)&part_id[i], v_part_id);
+  // }
+  //
+  // // Handling of the remaining item in case the keys are not multiple of 4
+  // for (; i < N; i++) {
+  //   uint64_t key = keys[i];
+  //   uint64_t hash = (key * prime_number) >> 32;
+  //   part_id[i] = hash & mask_val;
+  // }
 
 #else
 
