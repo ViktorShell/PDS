@@ -1,0 +1,305 @@
+/usr/include/c++/11/bits/locale_facets.h:1088:16: note: ***** Analysis failed with vector mode VOID
+/usr/include/c++/11/bits/locale_facets.h:879:21: missed: statement clobbers memory: std::ctype<char>::_M_widen_init (_14);
+/usr/include/c++/11/bits/locale_facets.h:880:23: missed: statement clobbers memory: _31 = OBJ_TYPE_REF(_25;_14->6) (_14, 10);
+/usr/include/c++/11/ostream:685:19: missed: statement clobbers memory: _8 = std::basic_ostream<char>::put (__os_1(D), prephitmp_35);
+/usr/include/c++/11/ostream:707:24: missed: statement clobbers memory: std::basic_ostream<char>::flush (_8);
+/usr/include/c++/11/bits/basic_ios.h:50:18: missed: statement clobbers memory: std::__throw_bad_cast ();
+/usr/include/c++/11/bits/basic_ios.h:50:18: note: ***** Analysis failed with vector mode V2DI
+/usr/include/c++/11/bits/basic_ios.h:50:18: note: ***** Skipping vector mode V16QI, which would repeat the analysis for V2DI
+pmk.cpp:46:24: missed: couldn't vectorize loop
+pmk.cpp:47:10: missed: not vectorized: unsupported use in stmt.
+pmk.cpp:37:10: note: vectorized 0 loops in function.
+pmk.cpp:51:10: note: ***** Analysis failed with vector mode V16QI
+pmk.cpp:51:10: note: ***** Skipping vector mode V16QI, which would repeat the analysis for V16QI
+pmk.cpp:142:27: optimized: loop vectorized using 16 byte vectors
+pmk.cpp:132:5: missed: couldn't vectorize loop
+pmk.cpp:132:5: missed: not vectorized: loop nest containing two or more consecutive inner loops cannot be vectorized
+pmk.cpp:106:12: missed: couldn't vectorize loop
+pmk.cpp:106:12: missed: not vectorized: unsupported data-type
+pmk.cpp:78:64: missed: couldn't vectorize loop
+pmk.cpp:78:64: missed: not vectorized: control flow in loop.
+pmk.cpp:124:6: note: vectorized 1 loops in function.
+pmk.cpp:124:6: missed: splitting region at control altering definition _45 = __builtin_ia32_pmuludq256 (_44, { 2135587861, -1640531527, 2135587861, -1640531527, 2135587861, -1640531527, 2135587861, -1640531527 });
+/usr/include/c++/11/ext/new_allocator.h:127:41: missed: statement clobbers memory: _126 = operator new (_241);
+/usr/include/c++/11/bits/stl_algobase.h:924:11: missed: statement clobbers memory: __builtin_memset (__first_127, 0, _212);
+pmk.cpp:132:5: missed: statement clobbers memory: start_exec_time = std::chrono::_V2::steady_clock::now ();
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:569:10: missed: not vectorized: statement can throw an exception: _45 = __builtin_ia32_pmuludq256 (_44, { 2135587861, -1640531527, 2135587861, -1640531527, 2135587861, -1640531527, 2135587861, -1640531527 });
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:569:10: note: ***** Analysis failed with vector mode V2DF
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:569:10: note: ***** Skipping vector mode V16QI, which would repeat the analysis for V2DF
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:569:10: missed: splitting region at dominance boundary bb10
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:569:10: note: ***** Analysis failed with vector mode VOID
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:569:10: missed: splitting region at control altering definition _46 = __builtin_ia32_psrlqi256 (_17, 32);
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:789:10: missed: not vectorized: statement can throw an exception: _46 = __builtin_ia32_psrlqi256 (_17, 32);
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:789:10: note: ***** Analysis failed with vector mode VOID
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:789:10: missed: splitting region at dominance boundary bb12
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:789:10: note: ***** Analysis failed with vector mode VOID
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:789:10: missed: splitting region at control altering definition _48 = __builtin_ia32_pmuludq256 (_47, { 2135587861, -1640531527, 2135587861, -1640531527, 2135587861, -1640531527, 2135587861, -1640531527 });
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:569:10: missed: not vectorized: statement can throw an exception: _48 = __builtin_ia32_pmuludq256 (_47, { 2135587861, -1640531527, 2135587861, -1640531527, 2135587861, -1640531527, 2135587861, -1640531527 });
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:569:10: note: ***** Analysis failed with vector mode VOID
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:569:10: missed: splitting region at dominance boundary bb14
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:569:10: note: ***** Analysis failed with vector mode VOID
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:569:10: missed: splitting region at control altering definition _49 = __builtin_ia32_pmuludq256 (_44, { -1640531527, 0, -1640531527, 0, -1640531527, 0, -1640531527, 0 });
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:569:10: missed: not vectorized: statement can throw an exception: _49 = __builtin_ia32_pmuludq256 (_44, { -1640531527, 0, -1640531527, 0, -1640531527, 0, -1640531527, 0 });
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:569:10: note: ***** Analysis failed with vector mode VOID
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:569:10: missed: splitting region at dominance boundary bb16
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:569:10: note: ***** Analysis failed with vector mode VOID
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:569:10: missed: splitting region at control altering definition _54 = __builtin_ia32_psllqi256 (_53, 32);
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:698:10: missed: not vectorized: statement can throw an exception: _54 = __builtin_ia32_psllqi256 (_53, 32);
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:698:10: note: ***** Analysis failed with vector mode VOID
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:698:10: missed: splitting region at dominance boundary bb18
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:698:10: note: ***** Analysis failed with vector mode VOID
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:698:10: missed: splitting region at control altering definition _59 = __builtin_ia32_psrlqi256 (_58, 32);
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:789:10: missed: not vectorized: statement can throw an exception: _59 = __builtin_ia32_psrlqi256 (_58, 32);
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:789:10: note: ***** Analysis failed with vector mode VOID
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:789:10: missed: splitting region at dominance boundary bb20
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:789:10: note: ***** Analysis failed with vector mode VOID
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avx2intrin.h:789:10: missed: splitting region at loop 4 exit at bb21
+pmk.cpp:77:16: note: ***** Analysis failed with vector mode VOID
+pmk.cpp:77:16: missed: splitting region at dominance boundary bb23
+pmk.cpp:106:12: note: ***** Analysis failed with vector mode VOID
+pmk.cpp:106:12: missed: splitting region at dominance boundary bb22
+pmk.cpp:106:3: note: ***** Analysis failed with vector mode V2DI
+pmk.cpp:106:3: note: ***** Skipping vector mode V16QI, which would repeat the analysis for V2DI
+pmk.cpp:106:3: missed: splitting region at dominance boundary bb25
+pmk.cpp:134:5: missed: statement clobbers memory: end_exec_time = std::chrono::_V2::steady_clock::now ();
+pmk.cpp:130:24: note: ***** Analysis failed with vector mode V2DI
+pmk.cpp:130:24: note: ***** Skipping vector mode V16QI, which would repeat the analysis for V2DI
+pmk.cpp:130:24: missed: splitting region at control altering definition _86 = std::basic_ostream<char>::_M_insert<double> (&cout, mean_23);
+/usr/include/c++/11/ostream:616:18: missed: not vectorized: statement can throw an exception: std::__ostream_insert<char, std::char_traits<char> > (&cout, "Mean: ", 6);
+/usr/include/c++/11/ostream:221:25: missed: not vectorized: statement can throw an exception: _86 = std::basic_ostream<char>::_M_insert<double> (&cout, mean_23);
+/usr/include/c++/11/ostream:221:25: note: ***** Analysis failed with vector mode V2DF
+/usr/include/c++/11/ostream:221:25: note: ***** Skipping vector mode V16QI, which would repeat the analysis for V2DF
+/usr/include/c++/11/ostream:221:25: missed: splitting region at dominance boundary bb31
+/usr/include/c++/11/ostream:221:25: note: ***** Analysis failed with vector mode VOID
+/usr/include/c++/11/ostream:221:25: missed: splitting region at control altering definition _159 = OBJ_TYPE_REF(_153;_142->6) (_142, 10);
+/usr/include/c++/11/bits/locale_facets.h:879:21: missed: not vectorized: statement can throw an exception: std::ctype<char>::_M_widen_init (_142);
+/usr/include/c++/11/bits/locale_facets.h:880:23: missed: not vectorized: statement can throw an exception: _159 = OBJ_TYPE_REF(_153;_142->6) (_142, 10);
+/usr/include/c++/11/bits/locale_facets.h:880:23: note: ***** Analysis failed with vector mode V2DI
+/usr/include/c++/11/bits/locale_facets.h:880:23: note: ***** Skipping vector mode V16QI, which would repeat the analysis for V2DI
+/usr/include/c++/11/bits/locale_facets.h:880:23: missed: splitting region at dominance boundary bb41
+/usr/include/c++/11/bits/locale_facets.h:880:23: note: ***** Analysis failed with vector mode VOID
+/usr/include/c++/11/bits/locale_facets.h:880:23: missed: splitting region at dominance boundary bb35
+/usr/include/c++/11/ostream:685:19: note: ***** Analysis failed with vector mode VOID
+/usr/include/c++/11/ostream:685:19: missed: splitting region at dominance boundary bb42
+/usr/include/c++/11/ostream:685:19: note: ***** Analysis failed with vector mode V16QI
+/usr/include/c++/11/ostream:685:19: note: ***** Skipping vector mode V16QI, which would repeat the analysis for V16QI
+/usr/include/c++/11/ostream:685:19: missed: splitting region at control altering definition _140 = std::basic_ostream<char>::put (_86, prephitmp_236);
+/usr/include/c++/11/ostream:685:19: missed: not vectorized: statement can throw an exception: _140 = std::basic_ostream<char>::put (_86, prephitmp_236);
+/usr/include/c++/11/ostream:685:19: note: ***** Analysis failed with vector mode VOID
+/usr/include/c++/11/ostream:685:19: missed: splitting region at dominance boundary bb44
+/usr/include/c++/11/ostream:685:19: note: ***** Analysis failed with vector mode VOID
+/usr/include/c++/11/ostream:685:19: missed: splitting region at control altering definition _87 = std::basic_ostream<char>::_M_insert<double> (&cout, std_dev_25);
+/usr/include/c++/11/ostream:707:24: missed: not vectorized: statement can throw an exception: std::basic_ostream<char>::flush (_140);
+/usr/include/c++/11/ostream:616:18: missed: not vectorized: statement can throw an exception: std::__ostream_insert<char, std::char_traits<char> > (&cout, "Std_dev: ", 9);
+/usr/include/c++/11/ostream:221:25: missed: not vectorized: statement can throw an exception: _87 = std::basic_ostream<char>::_M_insert<double> (&cout, std_dev_25);
+/usr/include/c++/11/ostream:221:25: note: ***** Analysis failed with vector mode VOID
+/usr/include/c++/11/ostream:221:25: missed: splitting region at dominance boundary bb50
+/usr/include/c++/11/ostream:221:25: note: ***** Analysis failed with vector mode VOID
+/usr/include/c++/11/ostream:221:25: missed: splitting region at control altering definition _187 = OBJ_TYPE_REF(_181;_170->6) (_170, 10);
+/usr/include/c++/11/bits/locale_facets.h:879:21: missed: not vectorized: statement can throw an exception: std::ctype<char>::_M_widen_init (_170);
+/usr/include/c++/11/bits/locale_facets.h:880:23: missed: not vectorized: statement can throw an exception: _187 = OBJ_TYPE_REF(_181;_170->6) (_170, 10);
+/usr/include/c++/11/bits/locale_facets.h:880:23: note: ***** Analysis failed with vector mode V2DI
+/usr/include/c++/11/bits/locale_facets.h:880:23: note: ***** Skipping vector mode V16QI, which would repeat the analysis for V2DI
+/usr/include/c++/11/bits/locale_facets.h:880:23: missed: splitting region at dominance boundary bb60
+/usr/include/c++/11/bits/locale_facets.h:880:23: note: ***** Analysis failed with vector mode VOID
+/usr/include/c++/11/bits/locale_facets.h:880:23: missed: splitting region at dominance boundary bb54
+/usr/include/c++/11/ostream:685:19: note: ***** Analysis failed with vector mode VOID
+/usr/include/c++/11/ostream:685:19: missed: splitting region at dominance boundary bb61
+/usr/include/c++/11/ostream:685:19: note: ***** Analysis failed with vector mode V16QI
+/usr/include/c++/11/ostream:685:19: note: ***** Skipping vector mode V16QI, which would repeat the analysis for V16QI
+/usr/include/c++/11/ostream:685:19: missed: splitting region at control altering definition _168 = std::basic_ostream<char>::put (_87, prephitmp_239);
+/usr/include/c++/11/ostream:685:19: missed: not vectorized: statement can throw an exception: _168 = std::basic_ostream<char>::put (_87, prephitmp_239);
+/usr/include/c++/11/ostream:685:19: note: ***** Analysis failed with vector mode VOID
+/usr/include/c++/11/ostream:685:19: missed: splitting region at dominance boundary bb63
+/usr/include/c++/11/ostream:685:19: note: ***** Analysis failed with vector mode VOID
+/usr/include/c++/11/ostream:685:19: missed: splitting region at dominance boundary bb51
+/usr/include/c++/11/ostream:707:24: missed: not vectorized: statement can throw an exception: std::basic_ostream<char>::flush (_168);
+/usr/include/c++/11/ext/new_allocator.h:145:19: missed: statement clobbers memory: operator delete (iftmp.11_160, _91);
+pmk.cpp:150:1: note: ***** Analysis failed with vector mode VOID
+pmk.cpp:150:1: missed: splitting region at dominance boundary bb32
+/usr/include/c++/11/bits/basic_ios.h:50:18: missed: not vectorized: statement can throw an exception: std::__throw_bad_cast ();
+/usr/include/c++/11/bits/basic_ios.h:50:18: note: ***** Analysis failed with vector mode VOID
+/usr/include/c++/11/bits/basic_ios.h:50:18: missed: splitting region at dominance boundary bb69
+/usr/include/c++/11/bits/basic_ios.h:50:18: missed: not vectorized: statement can throw an exception: std::__throw_bad_cast ();
+/usr/include/c++/11/bits/basic_ios.h:50:18: note: ***** Analysis failed with vector mode VOID
+/usr/include/c++/11/bits/basic_ios.h:50:18: missed: splitting region at dominance boundary bb77
+/usr/include/c++/11/ext/new_allocator.h:145:19: missed: statement clobbers memory: operator delete (iftmp.11_217, _95);
+/usr/include/c++/11/bits/stl_vector.h:683:7: note: ***** Analysis failed with vector mode VOID
+/usr/include/c++/11/bits/stl_vector.h:683:7: missed: splitting region at dominance boundary bb78
+/usr/include/c++/11/bits/stl_vector.h:683:7: note: ***** Analysis failed with vector mode VOID
+/usr/include/c++/11/bits/stl_vector.h:683:7: missed: splitting region at dominance boundary bb80
+/usr/include/c++/11/bits/stl_vector.h:683:7: note: ***** Analysis failed with vector mode VOID
+/usr/include/c++/11/bits/stl_vector.h:683:7: missed: splitting region at dominance boundary bb3
+/usr/include/c++/11/bits/stl_vector.h:683:7: note: ***** Analysis failed with vector mode VOID
+/usr/include/c++/11/bits/stl_vector.h:1770:24: missed: statement clobbers memory: std::__throw_length_error ("cannot create std::vector larger than max_size()");
+/usr/include/c++/11/bits/stl_vector.h:1770:24: note: ***** Analysis failed with vector mode VOID
+pmk.cpp:157:31: missed: couldn't vectorize loop
+pmk.cpp:157:31: missed: not vectorized: loop nest containing two or more consecutive inner loops cannot be vectorized
+pmk.cpp:159:7: missed: couldn't vectorize loop
+pmk.cpp:159:7: missed: not vectorized: loop nest containing two or more consecutive inner loops cannot be vectorized
+pmk.cpp:106:12: missed: couldn't vectorize loop
+pmk.cpp:106:12: missed: not vectorized: unsupported data-type
+pmk.cpp:77:16: missed: couldn't vectorize loop
+/usr/lib/gcc/x86_64-linux-gnu/11/include/avxintrin.h:929:11: missed: not vectorized: no vectype for stmt: _26 = MEM[(const __m256i_u * {ref-all})_25];
+ scalar_type: const __m256i_u
+pmk.cpp:153:6: note: vectorized 0 loops in function.
+/usr/include/c++/11/ostream:616:18: missed: statement clobbers memory: std::__ostream_insert<char, std::char_traits<char> > (&cout, "N;P;ELAPSED_TIME,THROUGHPUT", 27);
+/usr/include/c++/11/bits/locale_facets.h:879:21: missed: statement clobbers memory: std::ctype<char>::_M_widen_init (_97);
+/usr/include/c++/11/bits/locale_facets.h:880:23: missed: statement clobbers memory: _114 = OBJ_TYPE_REF(_108;_97->6) (_97, 10);
+/usr/include/c++/11/ostream:685:19: missed: statement clobbers memory: _95 = std::basic_ostream<char>::put (&cout, prephitmp_149);
+/usr/include/c++/11/ostream:707:24: missed: statement clobbers memory: std::basic_ostream<char>::flush (_95);
+pmk.cpp:159:7: missed: statement clobbers memory: start_exec_time = std::chrono::_V2::steady_clock::now ();
+pmk.cpp:161:7: missed: statement clobbers memory: end_exec_time = std::chrono::_V2::steady_clock::now ();
+/usr/include/c++/11/ostream:171:25: missed: statement clobbers memory: _68 = std::basic_ostream<char>::_M_insert<long unsigned int> (&cout, n_151);
+/usr/include/c++/11/ostream:616:18: missed: statement clobbers memory: std::__ostream_insert<char, std::char_traits<char> > (_68, ";", 1);
+/usr/include/c++/11/ostream:171:25: missed: statement clobbers memory: _69 = std::basic_ostream<char>::_M_insert<long unsigned int> (_68, p_116);
+/usr/include/c++/11/ostream:616:18: missed: statement clobbers memory: std::__ostream_insert<char, std::char_traits<char> > (_69, ";", 1);
+/usr/include/c++/11/ostream:221:25: missed: statement clobbers memory: _70 = std::basic_ostream<char>::_M_insert<double> (_69, _65);
+/usr/include/c++/11/ostream:616:18: missed: statement clobbers memory: std::__ostream_insert<char, std::char_traits<char> > (_70, ";", 1);
+/usr/include/c++/11/ostream:167:25: missed: statement clobbers memory: _71 = std::basic_ostream<char>::_M_insert<long int> (_70, _3);
+/usr/include/c++/11/bits/locale_facets.h:879:21: missed: statement clobbers memory: std::ctype<char>::_M_widen_init (_125);
+/usr/include/c++/11/bits/locale_facets.h:880:23: missed: statement clobbers memory: _145 = OBJ_TYPE_REF(_139;_125->6) (_125, 10);
+/usr/include/c++/11/ostream:685:19: missed: statement clobbers memory: _123 = std::basic_ostream<char>::put (_71, prephitmp_176);
+/usr/include/c++/11/ostream:707:24: missed: statement clobbers memory: std::basic_ostream<char>::flush (_123);
+/usr/include/c++/11/bits/basic_ios.h:50:18: missed: statement clobbers memory: std::__throw_bad_cast ();
+/usr/include/c++/11/bits/basic_ios.h:50:18: note: ***** Analysis failed with vector mode V2DI
+/usr/include/c++/11/bits/basic_ios.h:50:18: note: ***** Skipping vector mode V16QI, which would repeat the analysis for V2DI
+/usr/include/c++/11/bits/random.tcc:409:42: optimized: loop vectorized using 16 byte vectors
+/usr/include/c++/11/bits/random.tcc:401:32: optimized: loop vectorized using 16 byte vectors
+/usr/include/c++/11/bits/random.tcc:394:5: note: vectorized 2 loops in function.
+/usr/include/c++/11/bits/random.tcc:419:21: note: ***** Analysis failed with vector mode V2DI
+/usr/include/c++/11/bits/random.tcc:419:21: note: ***** The result for vector mode V16QI would be the same
+/usr/include/c++/11/bits/random.tcc:419:21: note: ***** Re-trying analysis with vector mode V8QI
+/usr/include/c++/11/bits/random.tcc:419:21: note: ***** Analysis failed with vector mode V8QI
+pmk.cpp:30:24: missed: couldn't vectorize loop
+pmk.cpp:30:24: missed: not vectorized: control flow in loop.
+/usr/include/c++/11/bits/random.tcc:330:32: missed: couldn't vectorize loop
+/usr/include/c++/11/bits/random.tcc:332:14: missed: not vectorized, possible dependence between data-refs MEM[(struct mersenne_twister_engine *)&gen]._M_x[_12] and MEM[(struct mersenne_twister_engine *)&gen]._M_x[__i_100]
+pmk.cpp:25:23: note: vectorized 0 loops in function.
+/usr/include/c++/11/ext/new_allocator.h:127:41: missed: statement clobbers memory: _48 = operator new (_62);
+/usr/include/c++/11/bits/stl_algobase.h:924:11: missed: statement clobbers memory: __builtin_memset (__first_49, 0, _1);
+/usr/include/c++/11/bits/random.tcc:456:13: missed: statement clobbers memory: std::mersenne_twister_engine<long unsigned int, 64, 312, 156, 31, 13043109905998158313, 29, 6148914691236517205, 17, 8202884508482404352, 37, 18444473444759240704, 43, 6364136223846793005>::_M_gen_rand (&gen);
+/usr/include/c++/11/bits/stl_vector.h:1770:24: missed: statement clobbers memory: std::__throw_length_error ("cannot create std::vector larger than max_size()");
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: ***** Analysis succeeded with vector mode V2DI
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: SLPing BB part
+/usr/include/c++/11/bits/stl_vector.h:98:4: note: Costing subgraph: 
+/usr/include/c++/11/bits/stl_vector.h:98:4: note: node 0x6c162c8 (max_nunits=2, refcnt=1)
+/usr/include/c++/11/bits/stl_vector.h:98:4: note: op template: MEM[(struct _Vector_impl_data *)keys_5(D)]._M_start = 0B;
+/usr/include/c++/11/bits/stl_vector.h:98:4: note: 	stmt 0 MEM[(struct _Vector_impl_data *)keys_5(D)]._M_start = 0B;
+/usr/include/c++/11/bits/stl_vector.h:98:4: note: 	stmt 1 MEM[(struct _Vector_impl_data *)keys_5(D)]._M_finish = 0B;
+/usr/include/c++/11/bits/stl_vector.h:98:4: note: 	children 0x6c16340
+/usr/include/c++/11/bits/stl_vector.h:98:4: note: node (constant) 0x6c16340 (max_nunits=1, refcnt=1)
+/usr/include/c++/11/bits/stl_vector.h:98:4: note: 	{ 0B, 0B }
+/usr/include/c++/11/bits/stl_vector.h:98:4: note: Cost model analysis: 
+/usr/include/c++/11/bits/stl_vector.h:98:4: note: Cost model analysis for part in loop 0:
+  Vector cost: 28
+  Scalar cost: 32
+/usr/include/c++/11/bits/stl_vector.h:98:4: note: Basic block will be vectorized using SLP
+/usr/include/c++/11/bits/stl_vector.h:98:4: note: Vectorizing SLP tree:
+/usr/include/c++/11/bits/stl_vector.h:98:4: note: node 0x6c162c8 (max_nunits=2, refcnt=1)
+/usr/include/c++/11/bits/stl_vector.h:98:4: note: op template: MEM[(struct _Vector_impl_data *)keys_5(D)]._M_start = 0B;
+/usr/include/c++/11/bits/stl_vector.h:98:4: note: 	stmt 0 MEM[(struct _Vector_impl_data *)keys_5(D)]._M_start = 0B;
+/usr/include/c++/11/bits/stl_vector.h:98:4: note: 	stmt 1 MEM[(struct _Vector_impl_data *)keys_5(D)]._M_finish = 0B;
+/usr/include/c++/11/bits/stl_vector.h:98:4: note: 	children 0x6c16340
+/usr/include/c++/11/bits/stl_vector.h:98:4: note: node (constant) 0x6c16340 (max_nunits=1, refcnt=1)
+/usr/include/c++/11/bits/stl_vector.h:98:4: note: 	{ 0B, 0B }
+/usr/include/c++/11/bits/stl_vector.h:98:4: note: ------>vectorizing SLP node starting from: MEM[(struct _Vector_impl_data *)keys_5(D)]._M_start = 0B;
+/usr/include/c++/11/bits/stl_vector.h:98:4: note: vect_is_simple_use: operand 0B, type of def: constant
+/usr/include/c++/11/bits/stl_vector.h:98:4: note: transform store. ncopies = 1
+/usr/include/c++/11/bits/stl_vector.h:98:4: note: create vector_type-pointer variable to type: vector(2) long unsigned int  vectorizing a pointer ref: MEM[(struct _Vector_impl_data *)keys_5(D)]._M_start
+/usr/include/c++/11/bits/stl_vector.h:98:4: note: created vectp.363_77
+/usr/include/c++/11/bits/stl_vector.h:98:4: note: add new stmt: MEM <vector(2) long unsigned int> [(long unsigned int * *)vectp.363_77] = { 0, 0 };
+/usr/include/c++/11/bits/stl_vector.h:98:4: note: vectorizing stmts using SLP.
+/usr/include/c++/11/bits/stl_vector.h:98:4: optimized: basic block part vectorized using 16 byte vectors
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: Costing subgraph: 
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: node 0x6c163b8 (max_nunits=2, refcnt=1)
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: op template: MEM[(struct _Vector_base *)keys_5(D)]._M_impl.D.117116._M_start = _48;
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: 	stmt 0 MEM[(struct _Vector_base *)keys_5(D)]._M_impl.D.117116._M_start = _48;
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: 	stmt 1 MEM[(struct _Vector_base *)keys_5(D)]._M_impl.D.117116._M_finish = _48;
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: 	children 0x6c16430
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: node (external) 0x6c16430 (max_nunits=1, refcnt=1)
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: 	{ _48, _48 }
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: Cost model analysis: 
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: Cost model analysis for part in loop 0:
+  Vector cost: 20
+  Scalar cost: 32
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: Vectorizing SLP tree:
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: node 0x6c163b8 (max_nunits=2, refcnt=1)
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: op template: MEM[(struct _Vector_base *)keys_5(D)]._M_impl.D.117116._M_start = _48;
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: 	stmt 0 MEM[(struct _Vector_base *)keys_5(D)]._M_impl.D.117116._M_start = _48;
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: 	stmt 1 MEM[(struct _Vector_base *)keys_5(D)]._M_impl.D.117116._M_finish = _48;
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: 	children 0x6c16430
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: node (external) 0x6c16430 (max_nunits=1, refcnt=1)
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: 	{ _48, _48 }
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: ------>vectorizing SLP node starting from: MEM[(struct _Vector_base *)keys_5(D)]._M_impl.D.117116._M_start = _48;
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: vect_is_simple_use: operand operator new (_62), type of def: internal
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: transform store. ncopies = 1
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: create vector_type-pointer variable to type: vector(2) long unsigned int  vectorizing a pointer ref: MEM[(struct _Vector_base *)keys_5(D)]._M_impl.D.117116._M_start
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: created vectp.365_55
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: add new stmt: MEM <vector(2) long unsigned int> [(long unsigned int * *)vectp.365_55] = _111;
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: vectorizing stmts using SLP.
+/usr/include/c++/11/bits/stl_vector.h:361:25: optimized: basic block part vectorized using 16 byte vectors
+/usr/include/c++/11/bits/stl_vector.h:361:25: note: ***** The result for vector mode V16QI would be the same
+pmk.cpp:46:24: missed: couldn't vectorize loop
+pmk.cpp:47:10: missed: not vectorized: unsupported use in stmt.
+pmk.cpp:46:24: missed: couldn't vectorize loop
+pmk.cpp:47:10: missed: not vectorized: unsupported use in stmt.
+pmk.cpp:172:5: note: vectorized 0 loops in function.
+pmk.cpp:172:5: missed: splitting region at control altering definition _97 = operator new (800000);
+/usr/include/c++/11/ostream:616:18: missed: statement clobbers memory: std::__ostream_insert<char, std::char_traits<char> > (&cout, "=== PMK (AVX) ===", 17);
+/usr/include/c++/11/ostream:113:13: missed: statement clobbers memory: std::endl.isra (&cout);
+pmk.cpp:189:47: missed: statement clobbers memory: keys = generate_keys (100000); [return slot optimization]
+/usr/include/c++/11/ext/new_allocator.h:127:41: missed: not vectorized: statement can throw an exception: _97 = operator new (800000);
+/usr/include/c++/11/ext/new_allocator.h:127:41: note: ***** Analysis failed with vector mode VOID
+/usr/include/c++/11/ext/new_allocator.h:127:41: missed: splitting region at dominance boundary bb3
+/usr/include/c++/11/ext/new_allocator.h:127:41: note: ***** Analysis failed with vector mode VOID
+/usr/include/c++/11/ext/new_allocator.h:127:41: missed: splitting region at control altering definition _11 = std::basic_ostream<char>::operator<< (&cout, 634330);
+/usr/include/c++/11/bits/stl_algobase.h:924:11: missed: statement clobbers memory: __builtin_memset (__first_98, 0, 799992);
+pmk.cpp:196:25: missed: not vectorized: statement can throw an exception: mean_and_std_deviation (_15, _97, 10, 100000, 1024);
+pmk.cpp:197:12: missed: not vectorized: statement can throw an exception: sweep_n_p (_13, _97, 100000, 1024);
+/usr/include/c++/11/ostream:616:18: missed: not vectorized: statement can throw an exception: std::__ostream_insert<char, std::char_traits<char> > (&cout, "Seed: ", 6);
+pmk.cpp:200:28: missed: not vectorized: statement can throw an exception: _11 = std::basic_ostream<char>::operator<< (&cout, 634330);
+pmk.cpp:200:28: note: ***** Analysis failed with vector mode V2DI
+pmk.cpp:200:28: note: ***** Skipping vector mode V16QI, which would repeat the analysis for V2DI
+pmk.cpp:200:28: missed: splitting region at control altering definition _5 = std::basic_ostream<char>::_M_insert<long unsigned int> (&cout, hash_43);
+/usr/include/c++/11/ostream:113:13: missed: not vectorized: statement can throw an exception: std::endl.isra (_11);
+/usr/include/c++/11/ostream:616:18: missed: not vectorized: statement can throw an exception: std::__ostream_insert<char, std::char_traits<char> > (&cout, "Keys checksum: ", 15);
+/usr/include/c++/11/ostream:171:25: missed: not vectorized: statement can throw an exception: _5 = std::basic_ostream<char>::_M_insert<long unsigned int> (&cout, hash_43);
+/usr/include/c++/11/ostream:171:25: note: ***** Analysis failed with vector mode V2DI
+/usr/include/c++/11/ostream:171:25: note: ***** Skipping vector mode V16QI, which would repeat the analysis for V2DI
+/usr/include/c++/11/ostream:171:25: missed: splitting region at dominance boundary bb20
+/usr/include/c++/11/ostream:171:25: note: ***** Analysis failed with vector mode VOID
+/usr/include/c++/11/ostream:171:25: missed: splitting region at control altering definition _32 = std::basic_ostream<char>::_M_insert<long unsigned int> (&cout, hash_55);
+/usr/include/c++/11/ostream:113:13: missed: not vectorized: statement can throw an exception: std::endl.isra (_5);
+/usr/include/c++/11/ostream:616:18: missed: not vectorized: statement can throw an exception: std::__ostream_insert<char, std::char_traits<char> > (&cout, "Part_id checksum: ", 18);
+/usr/include/c++/11/ostream:171:25: missed: not vectorized: statement can throw an exception: _32 = std::basic_ostream<char>::_M_insert<long unsigned int> (&cout, hash_55);
+/usr/include/c++/11/ostream:171:25: note: ***** Analysis failed with vector mode V16QI
+/usr/include/c++/11/ostream:171:25: note: ***** Skipping vector mode V16QI, which would repeat the analysis for V16QI
+/usr/include/c++/11/ostream:171:25: missed: splitting region at dominance boundary bb28
+/usr/include/c++/11/ostream:171:25: note: ***** Analysis failed with vector mode VOID
+/usr/include/c++/11/ostream:171:25: missed: splitting region at dominance boundary bb43
+/usr/include/c++/11/ostream:113:13: missed: not vectorized: statement can throw an exception: std::endl.isra (_32);
+/usr/include/c++/11/ext/new_allocator.h:145:19: missed: statement clobbers memory: operator delete (_97, 800000);
+/usr/include/c++/11/ext/new_allocator.h:145:19: missed: statement clobbers memory: operator delete (_46, _49);
+pmk.cpp:172:5: note: ***** Analysis failed with vector mode V2DI
+pmk.cpp:172:5: note: ***** Skipping vector mode V16QI, which would repeat the analysis for V2DI
+pmk.cpp:172:5: missed: splitting region at dominance boundary bb44
+pmk.cpp:172:5: note: ***** Analysis failed with vector mode VOID
+pmk.cpp:172:5: missed: splitting region at dominance boundary bb11
+pmk.cpp:172:5: note: ***** Analysis failed with vector mode VOID
+pmk.cpp:172:5: missed: splitting region at dominance boundary bb7
+pmk.cpp:172:5: note: ***** Analysis failed with vector mode VOID
+pmk.cpp:172:5: missed: splitting region at dominance boundary bb33
+pmk.cpp:172:5: note: ***** Analysis failed with vector mode VOID
+pmk.cpp:172:5: missed: splitting region at dominance boundary bb34
+pmk.cpp:172:5: note: ***** Analysis failed with vector mode VOID
+pmk.cpp:172:5: missed: splitting region at dominance boundary bb37
+/usr/include/c++/11/ext/new_allocator.h:145:19: missed: statement clobbers memory: operator delete (_97, 800000);
+pmk.cpp:172:5: missed: not vectorized: statement can throw an exception: resx 8
+/usr/include/c++/11/bits/stl_vector.h:683:7: note: ***** Analysis failed with vector mode VOID
+/usr/include/c++/11/ext/new_allocator.h:145:19: missed: statement clobbers memory: operator delete (_58, _61);
+/usr/include/c++/11/bits/stl_vector.h:683:7: note: ***** Analysis failed with vector mode V2DI
+/usr/include/c++/11/bits/stl_vector.h:683:7: note: ***** Skipping vector mode V16QI, which would repeat the analysis for V2DI
+/usr/include/c++/11/iostream:74:25: missed: statement clobbers memory: std::ios_base::Init::Init (&__ioinit);
+/usr/include/c++/11/iostream:74:25: missed: statement clobbers memory: __cxxabiv1::__cxa_atexit (__dt_comp , &__ioinit, &__dso_handle);
+pmk.cpp:207:1: note: ***** Analysis failed with vector mode VOID
