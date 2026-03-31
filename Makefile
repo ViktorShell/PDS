@@ -5,6 +5,7 @@ OPTFLAGS = -O3
 
 # Vectorization report
 VEC_REPO_DIR=vect_rep
+LOG_REPO_DIR=logs
 VEC_REPORT_AUTO = -fopt-info-vec-all=./$(VEC_REPO_DIR)/report_$(BIN_AUTO)_info_vec.all
 VEC_REPORT_AVX = -fopt-info-vec-all=./$(VEC_REPO_DIR)/report_$(BIN_AVX)_info_vec.all
 
@@ -19,43 +20,47 @@ BIN_AUTO = bsl_autovec
 BIN_AVX  = bsl_avx
 BIN_CUDA = bsl_cuda
 
-.PHONY: all clean clean_report cleanall help
+.PHONY: exec_all all clean clean_report cleanall help
 
 all: $(BIN_NO) $(BIN_AUTO) $(BIN_AVX) $(BIN_CUDA)
 
 help:
 	@echo "Makefile aviable options:"
-	@echo "  make $(BIN_NO)    Build without auto vectorization"
-	@echo "  make $(BIN_AUTO)       Build with auto vectorization"
-	@echo "  make $(BIN_AVX)        Build with manual AVX"
-	@echo "  make $(BIN_CUDA)          Build with cuda"
-	@echo "  make all               Build all the executables"
-	@echo "  make clean             Delete all the executables"
-	@echo "  make clean_report      Delete all the vectorizations reports (.txt)"
-	@echo "  make cleanall          Delete all executables and reports"
-	@echo "  make exec_all          Gater data from all the executables"
-	@echo "  make exec_$(BIN_NO)    Gater data from the baseline"
-	@echo "  make exec_$(BIN_AUTO)    Gater data from the auto vectorized executable"
-	@echo "  make exec_$(BIN_AVX)    Gater data from the manual avx executable"
-	@echo "  make exec_$(BIN_CUDA)    Gater data from the cuda executable"
+	@echo "  make $(BIN_NO)    	Build without auto vectorization"
+	@echo "  make $(BIN_AUTO)       	Build with auto vectorization"
+	@echo "  make $(BIN_AVX)           	Build with manual AVX"
+	@echo "  make $(BIN_CUDA)          	Build with cuda"
+	@echo "  make all               	Build all the executables"
+	@echo "  make clean             	Delete all the executables"
+	@echo "  make clean_report      	Delete all the vectorizations reports (.txt)"
+	@echo "  make cleanall          	Delete all executables and reports"
+	@echo "  make exec_all          	Gater data from all the executables in the (logs) folder"
+	@echo "  make exec_$(BIN_NO)    	Gater data from the baseline"
+	@echo "  make exec_$(BIN_AUTO)    	Gater data from the auto vectorized executable"
+	@echo "  make exec_$(BIN_AVX)    		Gater data from the manual avx executable"
+	@echo "  make exec_$(BIN_CUDA)    	Gater data from the cuda executable"
 
-# Report dir
+# Autovec report dir
 $(VEC_REPO_DIR):
 	mkdir -p $@
 
-exec_$(BIN_NO): $(BIN_NO)
-	./$(BIN_NO) > $(BIN_NO).log 2>&1
+# Data metrics dir
+$(LOG_REPO_DIR):
+	mkdir -p $@
 
-exec_$(BIN_AUTO): $(BIN_AUTO)
-	./$(BIN_AUTO) > $(BIN_AUTO).log 2>&1
+exec_$(BIN_NO): $(BIN_NO) | $(LOG_REPO_DIR)
+	./$(BIN_NO) > ./$(LOG_REPO_DIR)/$(BIN_NO).log
 
-exec_$(BIN_AVX): $(BIN_AVX)
-	./$(BIN_AVX) > $(BIN_AVX).log 2>&1
+exec_$(BIN_AUTO): $(BIN_AUTO) | $(LOG_REPO_DIR)
+	./$(BIN_AUTO) > ./$(LOG_REPO_DIR)/$(BIN_AUTO).log
 
-exec_$(BIN_CUDA): $(BIN_CUDA)
-	./$(BIN_CUDA) > $(BIN_CUDA).log 2>&1
+exec_$(BIN_AVX): $(BIN_AVX) | $(LOG_REPO_DIR)
+	./$(BIN_AVX) > ./$(LOG_REPO_DIR)/$(BIN_AVX).log
 
-exec_all: $(BIN_NO) $(BIN_AUTO) $(BIN_AVX) $(BIN_CUDA)
+exec_$(BIN_CUDA): $(BIN_CUDA) | $(LOG_REPO_DIR)
+	./$(BIN_CUDA) > ./$(LOG_REPO_DIR)/$(BIN_CUDA).log
+
+exec_all: exec_$(BIN_NO) exec_$(BIN_AUTO) exec_$(BIN_AVX) exec_$(BIN_CUDA)
 	exec_$(BIN_NO)
 	exec_$(BIN_AUTO)
 	exec_$(BIN_AVX)
