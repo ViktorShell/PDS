@@ -52,11 +52,9 @@ uint64_t checksum(const uint64_t *vec, size_t size) {
 }
 
 #ifdef CUDA
-
 extern "C" void map_keys_cuda_timing(const uint64_t *host_keys,
                                      uint64_t *host_part_id, uint64_t P,
                                      size_t N);
-
 #else
 
 // It seems that always_inline have close to the same execution time as inline
@@ -70,14 +68,14 @@ map_keys(const uint64_t *__restrict__ keys, uint64_t *__restrict__ part_id,
   __m256i _prime = _mm256_set1_epi64x(prime_number);
   __m256i _mask = _mm256_set1_epi64x(P - 1);
 
-  // Precalcoliamo la parte alta del numero primo per l'emulazione
+  // precompute the upper part of the prime number for the emulation
   __m256i _prime_h = _mm256_srli_epi64(_prime, 32);
 
   size_t i = 0;
   for (; i + 4 <= N; i += 4) {
     __m256i _keys = _mm256_loadu_si256((const __m256i *)&keys[i]);
 
-    // --- Emulazione Moltiplicazione 64-bit (K * P) ---
+    // Emulation of the mul 64-bit (K * P)
     // 1. K_L * P_L
     __m256i mul_ll = _mm256_mul_epu32(_keys, _prime);
 
@@ -88,21 +86,21 @@ map_keys(const uint64_t *__restrict__ keys, uint64_t *__restrict__ part_id,
     // 3. K_L * P_H
     __m256i mul_lh = _mm256_mul_epu32(_keys, _prime_h);
 
-    // 4. Somma incrociata ((K_H * P_L) + (K_L * P_H)) << 32
+    // 4. Cross sum ((K_H * P_L) + (K_L * P_H)) << 32
     __m256i cross_sum = _mm256_add_epi64(mul_hl, mul_lh);
     __m256i cross_shifted = _mm256_slli_epi64(cross_sum, 32);
 
-    // 5. Risultato finale della moltiplicazione a 64-bit
+    // 5. Result of the mul as 64bits
     __m256i _hash = _mm256_add_epi64(mul_ll, cross_shifted);
-    // --------------------------------------------------
 
     _hash = _mm256_srli_epi64(_hash, 32);
     __m256i _and_result = _mm256_and_si256(_hash, _mask);
 
-    // Correzzione: storeu invece di store per prevenire i SegFault
+    // Save the result
     _mm256_storeu_si256((__m256i *)&part_id[i], _and_result);
   }
 
+  // THe remaining part not multiple of 4
   for (; i < N; i++) {
     uint64_t key = keys[i];
     uint64_t hash = (key * prime_number) >> 32;
@@ -111,6 +109,7 @@ map_keys(const uint64_t *__restrict__ keys, uint64_t *__restrict__ part_id,
 
 #else
 
+  // Baseline / autovectorization
   for (size_t i = 0; i < N; i++) {
     uint64_t key = keys[i];
     const uint64_t hash = (key * prime_number) >> 32;
