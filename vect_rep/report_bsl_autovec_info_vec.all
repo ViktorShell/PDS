@@ -1,0 +1,102 @@
+pmk.cpp:46:24: missed: couldn't vectorize loop
+pmk.cpp:47:10: missed: not vectorized: unsupported use in stmt.
+pmk.cpp:37:10: note: vectorized 0 loops in function.
+pmk.cpp:47:10: note: ***** Analysis failed with vector mode V32QI
+pmk.cpp:47:10: note: ***** The result for vector mode V32QI would be the same
+pmk.cpp:47:10: note: ***** Re-trying analysis with vector mode V16QI
+pmk.cpp:47:10: note: ***** Analysis failed with vector mode V16QI
+pmk.cpp:47:10: note: ***** Re-trying analysis with vector mode V8QI
+pmk.cpp:47:10: note: ***** Analysis failed with vector mode V8QI
+pmk.cpp:47:10: note: ***** Re-trying analysis with vector mode V4QI
+pmk.cpp:47:10: note: ***** Analysis failed with vector mode V4QI
+pmk.cpp:141:27: optimized: loop vectorized using 32 byte vectors
+pmk.cpp:141:27: optimized: loop vectorized using 16 byte vectors
+pmk.cpp:129:24: missed: couldn't vectorize loop
+pmk.cpp:131:5: missed: statement clobbers memory: start_exec_time = std::chrono::_V2::steady_clock::now ();
+pmk.cpp:113:24: optimized: loop vectorized using 32 byte vectors
+pmk.cpp:123:6: note: vectorized 2 loops in function.
+pmk.cpp:123:6: missed: splitting region at control altering definition _57 = std::basic_ostream<char>::_M_insert<double> (&cout, mean_96);
+pmk.cpp:131:5: missed: statement clobbers memory: start_exec_time = std::chrono::_V2::steady_clock::now ();
+pmk.cpp:133:5: missed: statement clobbers memory: end_exec_time = std::chrono::_V2::steady_clock::now ();
+pmk.cpp:143:21: note: ***** Analysis failed with vector mode V4DF
+pmk.cpp:143:21: note: ***** The result for vector mode V32QI would be the same
+pmk.cpp:143:21: note: ***** Re-trying analysis with vector mode V16QI
+pmk.cpp:143:21: note: ***** Analysis failed with vector mode V16QI
+pmk.cpp:143:21: note: ***** Re-trying analysis with vector mode V8QI
+pmk.cpp:143:21: note: ***** Analysis failed with vector mode V8QI
+pmk.cpp:143:21: note: ***** Re-trying analysis with vector mode V4QI
+pmk.cpp:143:21: note: ***** Analysis failed with vector mode V4QI
+pmk.cpp:143:21: missed: splitting region at dominance boundary bb18
+pmk.cpp:143:21: note: ***** Analysis failed with vector mode VOID
+pmk.cpp:143:21: missed: splitting region at control altering definition _126 = OBJ_TYPE_REF(_120;_109->6B) (_109, 10);
+pmk.cpp:149:1: note: ***** Analysis failed with vector mode VOID
+pmk.cpp:149:1: missed: splitting region at dominance boundary bb19
+pmk.cpp:156:31: missed: couldn't vectorize loop
+pmk.cpp:156:31: missed: not vectorized: multiple nested loops.
+pmk.cpp:158:7: missed: couldn't vectorize loop
+pmk.cpp:158:7: missed: not vectorized: control flow in loop.
+pmk.cpp:113:24: optimized: loop vectorized using 32 byte vectors
+pmk.cpp:152:6: note: vectorized 1 loops in function.
+pmk.cpp:158:7: missed: statement clobbers memory: start_exec_time = std::chrono::_V2::steady_clock::now ();
+pmk.cpp:160:7: missed: statement clobbers memory: end_exec_time = std::chrono::_V2::steady_clock::now ();
+pmk.cpp:116:23: note: ***** Analysis failed with vector mode V4DI
+pmk.cpp:116:23: note: ***** The result for vector mode V32QI would be the same
+pmk.cpp:116:23: note: ***** Re-trying analysis with vector mode V16QI
+pmk.cpp:116:23: note: ***** Analysis failed with vector mode V16QI
+pmk.cpp:116:23: note: ***** Re-trying analysis with vector mode V8QI
+pmk.cpp:116:23: note: ***** Analysis failed with vector mode V8QI
+pmk.cpp:116:23: note: ***** Re-trying analysis with vector mode V4QI
+pmk.cpp:116:23: note: ***** Analysis failed with vector mode V4QI
+pmk.cpp:30:24: missed: couldn't vectorize loop
+pmk.cpp:30:24: missed: not vectorized: control flow in loop.
+pmk.cpp:25:23: note: vectorized 0 loops in function.
+pmk.cpp:46:24: missed: couldn't vectorize loop
+pmk.cpp:47:10: missed: not vectorized: unsupported use in stmt.
+pmk.cpp:46:24: missed: couldn't vectorize loop
+pmk.cpp:47:10: missed: not vectorized: unsupported use in stmt.
+pmk.cpp:171:5: note: vectorized 0 loops in function.
+pmk.cpp:171:5: missed: splitting region at control altering definition _90 = operator new (800000);
+pmk.cpp:188:47: missed: statement clobbers memory: keys = generate_keys (100000); [return slot optimization]
+pmk.cpp:195:25: missed: not vectorized: statement can throw an exception: mean_and_std_deviation (_15, _90, 10, 100000, 1024);
+pmk.cpp:196:12: missed: not vectorized: statement can throw an exception: sweep_n_p (_15, _90, 100000, 1024);
+pmk.cpp:199:28: missed: not vectorized: statement can throw an exception: _11 = std::basic_ostream<char>::operator<< (&cout, 634330);
+pmk.cpp:199:28: note: ***** Analysis failed with vector mode V4DI
+pmk.cpp:199:28: note: ***** Skipping vector mode V32QI, which would repeat the analysis for V4DI
+pmk.cpp:199:28: missed: splitting region at control altering definition _5 = std::basic_ostream<char>::_M_insert<long unsigned int> (&cout, hash_14);
+pmk.cpp:47:10: note: ***** Analysis failed with vector mode V4DI
+pmk.cpp:47:10: note: ***** The result for vector mode V32QI would be the same
+pmk.cpp:47:10: note: ***** Re-trying analysis with vector mode V16QI
+pmk.cpp:47:10: note: ***** Analysis failed with vector mode V16QI
+pmk.cpp:47:10: note: ***** Re-trying analysis with vector mode V8QI
+pmk.cpp:47:10: note: ***** Analysis failed with vector mode V8QI
+pmk.cpp:47:10: note: ***** Re-trying analysis with vector mode V4QI
+pmk.cpp:47:10: note: ***** Analysis failed with vector mode V4QI
+pmk.cpp:47:10: missed: splitting region at dominance boundary bb14
+pmk.cpp:47:10: note: ***** Analysis failed with vector mode VOID
+pmk.cpp:47:10: missed: splitting region at control altering definition _30 = std::basic_ostream<char>::_M_insert<long unsigned int> (&cout, hash_100);
+pmk.cpp:47:10: note: ***** Analysis failed with vector mode V32QI
+pmk.cpp:47:10: note: ***** The result for vector mode V32QI would be the same
+pmk.cpp:47:10: note: ***** Re-trying analysis with vector mode V16QI
+pmk.cpp:47:10: note: ***** Analysis failed with vector mode V16QI
+pmk.cpp:47:10: note: ***** Re-trying analysis with vector mode V8QI
+pmk.cpp:47:10: note: ***** Analysis failed with vector mode V8QI
+pmk.cpp:47:10: note: ***** Re-trying analysis with vector mode V4QI
+pmk.cpp:47:10: note: ***** Analysis failed with vector mode V4QI
+pmk.cpp:47:10: missed: splitting region at dominance boundary bb18
+pmk.cpp:47:10: note: ***** Analysis failed with vector mode VOID
+pmk.cpp:47:10: missed: splitting region at dominance boundary bb41
+pmk.cpp:171:5: note: ***** Analysis failed with vector mode V4DI
+pmk.cpp:171:5: note: ***** Skipping vector mode V32QI, which would repeat the analysis for V4DI
+pmk.cpp:171:5: missed: splitting region at dominance boundary bb42
+pmk.cpp:171:5: note: ***** Analysis failed with vector mode VOID
+pmk.cpp:171:5: missed: splitting region at dominance boundary bb29
+pmk.cpp:171:5: note: ***** Analysis failed with vector mode VOID
+pmk.cpp:171:5: missed: splitting region at dominance boundary bb31
+pmk.cpp:171:5: note: ***** Analysis failed with vector mode VOID
+pmk.cpp:171:5: missed: splitting region at dominance boundary bb32
+pmk.cpp:171:5: note: ***** Analysis failed with vector mode VOID
+pmk.cpp:171:5: missed: splitting region at dominance boundary bb33
+pmk.cpp:171:5: note: ***** Analysis failed with vector mode VOID
+pmk.cpp:171:5: missed: splitting region at dominance boundary bb36
+pmk.cpp:171:5: missed: not vectorized: statement can throw an exception: resx 7
+pmk.cpp:206:1: note: ***** Analysis failed with vector mode VOID

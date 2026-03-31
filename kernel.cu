@@ -47,7 +47,7 @@ extern "C" void map_keys_cuda_timing(const uint64_t *host_keys,
 
   TIMERSTART(kernel_map)
   map_keys_kernel<<<numBlocks, blockSize>>>(d_keys, d_part_id, P, N);
-  cudaDeviceSynchronize(); // Attende la fine del kernel [cite: 356]
+  cudaDeviceSynchronize();
   TIMERSTOP(kernel_map)
 
   // D2H Transfer
